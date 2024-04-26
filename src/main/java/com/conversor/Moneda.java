@@ -20,7 +20,7 @@ public class Moneda {
     public Moneda(MonedaRecord miMoneda) {
         this.monedaBase = miMoneda.base_code();
          this.conversiones = miMoneda.conversion_rates();
-    }
+    } 
     public double getConversiones(String moneda) {
         //Set<String> miKey = conversiones.keySet();
         return  conversiones.get(moneda);
