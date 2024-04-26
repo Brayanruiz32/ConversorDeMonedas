@@ -19,14 +19,17 @@ public class Main {
             Logica miLogica = new Logica();
             miLogica.menu();
             int opcion = Integer.parseInt(entrada.nextLine());
-            if (miLogica.verificador(miMoneda, opcion)) {
-                miLogica.logicaPrincipal();
+            if (miLogica.verificador(miMoneda, opcion) && opcion != 7) {
+                miMoneda.historial(miLogica.logicaPrincipal());
+            } else if (opcion == 7) {
+                for (String elemento : miMoneda.mostrarHistorial()) {
+                    System.out.println(elemento);
+                }
             } else {
                 continuar = false;
-            }   
-        } 
+            }
+        }
         entrada.close();
         System.out.println("Gracias por utilizar el conversor :D");
     }
-
 }

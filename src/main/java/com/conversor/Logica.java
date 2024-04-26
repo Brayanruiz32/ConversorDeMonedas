@@ -1,6 +1,7 @@
 package com.conversor;
 
 import java.text.DecimalFormat;
+import java.time.LocalDateTime;
 import java.util.Scanner;
 
 public class Logica {
@@ -17,8 +18,7 @@ public class Logica {
 
     private Scanner entrada = new Scanner(System.in);
 
-    public void logicaPrincipal() {
-
+    public String logicaPrincipal() {
         System.out.println("Ingrese la cantidad a convertir");
         double dinero = Double.parseDouble(entrada.nextLine());
         if (operacionDivision) {
@@ -28,16 +28,15 @@ public class Logica {
         }
         DecimalFormat df = new DecimalFormat("#.##");
         String resultadorFormateado = df.format(resultado);
-        System.out.println("El valor de " + dinero + " [" + prefijo + "] corresponde al valor final de =>>> "
-                + resultadorFormateado + " [" + sufijo + "]");
-
+        return "El valor de " + dinero + " [" + prefijo + "] corresponde al valor final de =>>> "
+                + resultadorFormateado + " [" + sufijo + "] convertido el "+ LocalDateTime.now();
     }
 
     public boolean verificador(Moneda miMoneda, int opcion) {
         switch (opcion) {
             case 1:
                 cambio = miMoneda.getConversiones("EUR");
-                denominaciones("EUR", "PEN");        
+                denominaciones("EUR", "PEN");
                 return true;
             case 2:
                 cambio = miMoneda.getConversiones("EUR");
@@ -59,6 +58,8 @@ public class Logica {
                 cambio = miMoneda.getConversiones("GBP");
                 denominaciones("PEN", "GBP", true);
                 return true;
+            case 7:
+                return true;
             default:
                 return false;
         }
@@ -76,9 +77,10 @@ public class Logica {
 
     }
 
-    public void menu(){
-        System.out.println("1) Nuevo Sol >>>>>> Euros \n2) Euros >>>>>>> Nuevo Sol\n3) Nuevo Sol >>>>>> Dolares Estadounidenses\n4) Dolares Estadounidenses >>>> Nuevo Sol"
-        + "\n5) Nuevo Sol >>>>>> Libra Esterlina\n6) Libra Esterlina >>>>>>> Nuevo Sol\n7 Salir");
+    public void menu() {
+        System.out.println(
+                "1) Nuevo Sol >>>>>> Euros \n2) Euros >>>>>>> Nuevo Sol\n3) Nuevo Sol >>>>>> Dolares Estadounidenses\n4) Dolares Estadounidenses >>>> Nuevo Sol"
+                        + "\n5) Nuevo Sol >>>>>> Libra Esterlina\n6) Libra Esterlina >>>>>>> Nuevo Sol\n7 Mostrar historial de conversiones \n8 Salir");
         System.out.println("Escoja una opcion del menu en pantalla");
     }
 

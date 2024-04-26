@@ -1,21 +1,16 @@
 package com.conversor;
 
-import java.lang.reflect.Array;
-import java.security.Key;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
-
-import com.google.gson.annotations.SerializedName;
 
 public class Moneda {
-    
     
     private String monedaBase;
     
     private Map<String, Double> conversiones = new HashMap<String, Double>();
 
+    private ArrayList<String> conversionesRealizadas = new ArrayList<String>();
 
     public Moneda(MonedaRecord miMoneda) {
         this.monedaBase = miMoneda.base_code();
@@ -39,9 +34,13 @@ public class Moneda {
         return "Moneda [monedaBase=" + monedaBase + ", conversiones=" + conversiones + "]";
     }
 
-    
+    public void historial(String cambioRealizado){
+        conversionesRealizadas.add(cambioRealizado);
+        System.out.println(cambioRealizado);
+    }
 
-
-    
+    public ArrayList<String> mostrarHistorial(){
+        return this.conversionesRealizadas;
+    }
 
 }
