@@ -23,7 +23,7 @@ public class Main {
                 miLogica.logicaPrincipal();
             } else {
                 continuar = false;
-            } 
+            }   
         } 
         entrada.close();
         System.out.println("Gracias por utilizar el conversor :D");
